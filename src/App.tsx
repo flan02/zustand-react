@@ -1,40 +1,32 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
+// TODO Github API with my data
+//https://api.github.com/users/flan02
+//https://api.github.com/users/flan02/repos
 
-//import React from 'react'
+// TODO Zustand docs
+// https://docs.pmnd.rs/zustand/getting-started/introduction
 
-import './App.css'
-import ProductList from './components/ProductList'
-import { PRODUCTS } from './products'
-import Cart from './components/Cart'
-import Counter from './components/Counter'
-
-/* 
-* The common way without global state management
-function App() {
-  const [cart, setCart] = React.useState<typeof PRODUCTS>([])
-  return (
-    <div className='App'>
-    <h1>Welcome to the Store with Zustand</h1>
-    <ProductList products={PRODUCTS} setCart={setCart} />
-    <hr />
-    <Cart cart={cart} setCart={setCart} />
-    </div>
-    )
-  }
-*/
-
-// TODO The Zustand way
-// ? it looks like the component is cleaner
+import Repo from './components/Repo'
+import { useFetchRepos } from './hooks/useRepos'
+import { useFavouriteReposStore, useFavouriteReposStorePersist } from './store/favouriteRepos'
 
 function App() {
-
+  const reposQuery = useFetchRepos()
+  const reposStore = useFavouriteReposStorePersist()
+  if (reposQuery.isLoading) return <div>Loading...</div>
+  //console.log(reposQuery.data);
+  //console.log(Object.keys(reposQuery.data));
   return (
     <div className='App'>
-      <h1>Welcome to the Store with Zustand</h1>
-      <ProductList products={PRODUCTS} />
-      <hr />
-      <Cart />
-      <Counter />
+      <h1>Github data from API using Zustand & ReactQuery</h1>
+      {
+        reposQuery.data?.map((repo) => (
+          <Repo key={repo.id} repo={repo} isFavourite={reposStore.id.includes(repo.id)} />
+
+        ))
+      }
+
     </div>
   )
 }
