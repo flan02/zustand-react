@@ -6,6 +6,7 @@ import './App.css'
 import ProductList from './components/ProductList'
 import { PRODUCTS } from './products'
 import Cart from './components/Cart'
+import Counter from './components/Counter'
 
 /* 
 * The common way without global state management
@@ -33,6 +34,7 @@ function App() {
       <ProductList products={PRODUCTS} />
       <hr />
       <Cart />
+      <Counter />
     </div>
   )
 }

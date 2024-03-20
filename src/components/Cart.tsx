@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/ban-types */
 
-import { Product } from "../products"
+//import { Product } from "../products"
 import { useCartStore } from "../store/cart-store"
 
 
@@ -61,6 +61,7 @@ const Cart = () => {
       {
         cartStore.cart.length > 0 && <button onClick={() => cartStore.emptyCart()}>Empty Cart</button>
       }
+      <hr />
     </div>
   )
 }
