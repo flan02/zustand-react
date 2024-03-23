@@ -1,10 +1,10 @@
-import ZustandBasics from "./components/ZustandBasics"
+//import ZustandBasics from "./components/ZustandBasics"
 import AuthZustand from "./components/AuthZustand"
 
 function App() {
   return (
     <>
-      {<ZustandBasics />}
+      { /* <ZustandBasics /> */}
       <AuthZustand />
     </>
 
