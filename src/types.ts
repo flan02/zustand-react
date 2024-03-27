@@ -119,3 +119,23 @@ export interface License {
   node_id: string
 }
 
+export interface Product {
+  id: number
+  name: string
+  price: number
+}
+
+export interface CartItem {
+  product: Product
+  quantity: number
+}
+
+export interface ShoppingCart {
+  items: CartItem[]
+  addItem: (product: Product, quantity: number) => void
+  removeItem: (id: number) => void
+  increaseQuantity: (id: number, quantity?: number) => void
+  decreaseQuantity: (id: number, quantity?: number) => void
+  getTotalPrice: () => React.ReactNode,
+  clearCart: () => void
+}
